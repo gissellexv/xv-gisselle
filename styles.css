@@ -1,0 +1,920 @@
+/* ==========================================================================
+   Invitación XV Gisselle - Estilos Oficiales (Temática Verde Claro / Sobre Borgoña)
+   ========================================================================== */
+
+/* Importación de fuentes oficiales */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+
+/* Variables de la paleta de colores oficial */
+:root {
+  --bg-page: #f4f8f4;            /* Fondo verde pastel muy suave */
+  --bg-card: #ffffff;            /* Tarjetas en blanco puro */
+  --text-main: #2a3d28;          /* Texto principal en verde bosque oscuro */
+  --text-muted: #556b50;         /* Texto secundario verde apagado */
+  
+  --accent-green-bg: #a9dfbf;    /* Fondo verde pastel oficial para botones */
+  --accent-green-text: #2c5a21;  /* Texto sobre botón verde pastel */
+  --accent-green-hover: #8ed3a6; /* Hover de botones */
+  --color-gold: #c5a059;         /* Dorado elegante */
+  
+  /* Variables para el sobre de color borgoña (según imagen) */
+  --env-burgundy: #6b1724;       /* Color borgoña principal de la imagen */
+  --env-burgundy-dark: #4d0e18;  /* Tono oscuro para sombra */
+  --env-burgundy-light: #7e1e2d; /* Tono claro para brillo */
+  
+  --font-cursive: 'Dancing Script', cursive;
+  --font-sans: 'Roboto', sans-serif;
+  
+  --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.3s ease;
+}
+
+/* Reset y estilos generales */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #e2ebe2;    /* Fondo exterior de escritorio */
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-x: hidden;
+}
+
+/* Contenedor principal (bloqueado a ancho de celular) */
+.app-container {
+  width: 100%;
+  max-width: 480px;
+  background-color: var(--bg-page);
+  min-height: 100vh;
+  position: relative;
+  box-shadow: 0 0 30px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   SOBRE DE BIENVENIDA BORGOÑA (Carta de Apertura Realista)
+   ========================================================================== */
+.envelope-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-page);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+  overflow: hidden;
+}
+
+/* Contenedor del sobre */
+.envelope-wrapper {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  perspective: 1000px;
+  margin-bottom: 30px;
+  z-index: 10;
+}
+
+.envelope {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--env-burgundy);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 15px 35px rgba(88, 10, 19, 0.2);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+/* Solapa superior en V profunda con borde blanco interno */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110px;
+  background-color: #ffffff; /* Base blanca para el borde de la imagen */
+  z-index: 30;
+  transform-origin: top;
+  transition: transform 0.8s ease-in-out;
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+}
+
+/* Contenido interior de la solapa en color borgoña */
+.envelope-flap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1.5px;
+  width: calc(100% - 3px);
+  height: calc(100% - 1.5px);
+  background-color: var(--env-burgundy);
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+}
+
+/* Bolsillo del sobre con doble pliegue diagonal */
+.envelope-pocket {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 135px;
+  background-color: var(--env-burgundy);
+  z-index: 20;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+/* Pliegue izquierdo */
+.envelope-pocket::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--env-burgundy-light);
+  clip-path: polygon(0 0, 50% 65%, 0 100%);
+  border-radius: 0 0 0 8px;
+}
+
+/* Pliegue derecho */
+.envelope-pocket::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--env-burgundy-dark);
+  clip-path: polygon(100% 0, 50% 65%, 100% 100%);
+  border-radius: 0 0 8px 0;
+}
+
+/* Carta / Tarjeta de Pergamino (TOTALMENTE oculta en estado cerrado) */
+.envelope-card {
+  position: absolute;
+  bottom: 5px;
+  left: 15px;
+  width: 270px;
+  height: 125px; /* Altura segura para no sobresalir */
+  background: radial-gradient(circle, #fcfaf0 0%, #f3eac2 100%);
+  border-radius: 4px;
+  z-index: 10;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: inset 0 0 15px rgba(139, 101, 8, 0.2), 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  border: 2px solid #b59b58;
+}
+
+/* Letras doradas premium medievales */
+.envelope-card h2 {
+  font-family: var(--font-cursive);
+  font-size: 2rem;
+  color: #8c6621;
+  margin-bottom: 2px;
+  font-weight: 700;
+  text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.7);
+}
+
+.envelope-card p {
+  font-size: 0.75rem;
+  color: #6b5320;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.envelope-card .card-btn {
+  background: var(--env-burgundy);
+  color: #ffffff;
+  border: 1px solid #b59b58;
+  padding: 8px 18px;
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  transition: var(--transition-fast);
+}
+
+.envelope-card .card-btn:hover {
+  background: #b59b58;
+  color: var(--env-burgundy);
+  transform: scale(1.03);
+}
+
+/* Sello de Lacre Dorado Metálico */
+.wax-seal {
+  position: absolute;
+  top: 85px;
+  left: 125px;
+  width: 50px;
+  height: 50px;
+  border-radius: 48% 52% 50% 50% / 50% 50% 52% 48%;
+  background: radial-gradient(circle, #ffe994 0%, #d4af37 60%, #a67c1e 100%);
+  border: 1px solid #ffd86b;
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #553e10;
+  font-family: var(--font-cursive);
+  font-size: 1.3rem;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: transform 0.3s, opacity 0.5s;
+}
+
+.wax-seal:hover {
+  transform: scale(1.08) rotate(5deg);
+}
+
+/* ESTADOS DE ANIMACIÓN DEL SOBRE */
+.envelope-screen.opened-flap .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 5;
+}
+
+.envelope-screen.opened-flap .wax-seal {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.envelope-screen.pulled-card .envelope-card {
+  transform: translateY(-95px);
+  z-index: 25;
+}
+
+.envelope-screen.hide-envelope {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.open-helper-text {
+  color: var(--text-main);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 15px;
+  animation: pulse 2s infinite;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+
+/* ==========================================================================
+   CONTENEDOR FIJO Y CENTRADO DE LA MASCOTA "DAVIK"
+   ========================================================================== */
+.mascot-fixed-wrapper {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  pointer-events: none; /* Deja pasar clicks al contenido de abajo */
+  z-index: 1500;
+}
+
+.mascot-container {
+  position: absolute; /* Posicionado absolutamente con respecto a la tarjeta */
+  pointer-events: auto; /* Activa los clicks en la mascota */
+  display: flex;
+  flex-direction: column; /* Globo arriba, mascota abajo */
+  align-items: center;
+  cursor: pointer;
+  transition: top 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              bottom 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              left 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              right 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              opacity 0.4s ease;
+  width: 65px;
+}
+
+/* Cuando está arriba, el globo va abajo (mascota arriba) */
+.mascot-container.top-corner {
+  flex-direction: column-reverse;
+}
+
+/* Animación de deslizamiento hacia abajo al teletransportarse (sin remolino) */
+.mascot-container.teleporting {
+  transform: translateY(60px) !important;
+  opacity: 0 !important;
+}
+
+/* Globo de diálogo flotante (Oculto por defecto, se activa con JS) */
+.speech-bubble {
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1.5px solid rgba(182, 215, 168, 0.6);
+  padding: 8px 14px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(42, 61, 40, 0.08);
+  white-space: nowrap;
+  animation: floatBubble 2s infinite ease-in-out;
+  pointer-events: none;
+  order: 1;
+  opacity: 0; /* Oculto por defecto */
+  transition: opacity 0.3s ease;
+}
+
+.mascot-container.top-corner .speech-bubble {
+  margin-bottom: 0;
+  margin-top: 8px;
+  order: 2;
+}
+
+/* Pequeño indicador del globo apuntando hacia abajo (default) */
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0;
+  border-style: solid;
+  border-color: var(--bg-card) transparent;
+  display: block;
+  width: 0;
+  z-index: 10;
+}
+
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px 8px 0;
+  border-style: solid;
+  border-color: rgba(182, 215, 168, 0.6) transparent;
+  display: block;
+  width: 0;
+  z-index: 5;
+}
+
+/* Indicador apuntando hacia arriba (cuando está arriba) */
+.mascot-container.top-corner .speech-bubble::after {
+  top: -6px;
+  bottom: auto;
+  border-width: 0 6px 6px;
+  border-style: solid;
+  border-color: transparent transparent var(--bg-card) transparent;
+}
+
+.mascot-container.top-corner .speech-bubble::before {
+  top: -8px;
+  bottom: auto;
+  border-width: 0 8px 8px;
+  border-style: solid;
+  border-color: transparent transparent rgba(182, 215, 168, 0.6) transparent;
+}
+
+/* MASCOTA CON TRANSPARENCIA NATIVA (PNG) */
+#mascotImg {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  order: 2;
+  transition: transform 0.2s;
+}
+
+.mascot-container.top-corner #mascotImg {
+  order: 1;
+}
+
+.mascot-container:hover #mascotImg {
+  transform: scale(1.08);
+}
+
+@keyframes floatBubble {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+
+/* ==========================================================================
+   REPRODUCTOR DE AUDIO ESTILO SPOTIFY
+   ========================================================================== */
+.spotify-player-container {
+  width: 95%;
+  max-width: 450px;
+  margin: 20px auto 10px;
+  background: var(--bg-card); 
+  padding: 10px 18px; 
+  border-radius: 50px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  box-shadow: 0px 4px 15px rgba(42, 61, 40, 0.08);
+  border: 1px solid rgba(182, 215, 168, 0.3);
+  box-sizing: border-box;
+}
+
+.spotify-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.spotify-album-art {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--text-main);
+  background-image: url('img/gisselle_start.jpg');
+  background-size: cover;
+  background-position: center;
+  animation: spin 8s linear infinite;
+  animation-play-state: paused;
+  border: 1px solid rgba(182, 215, 168, 0.3);
+}
+
+.spotify-album-art.playing {
+  animation-play-state: running;
+}
+
+.spotify-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.spotify-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.spotify-artist {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.btn-play-pause {
+  background: var(--accent-green-bg); 
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--accent-green-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s;
+  box-shadow: 0 2px 6px rgba(169, 223, 191, 0.4);
+}
+
+.btn-play-pause:hover {
+  transform: scale(1.05);
+  background-color: var(--accent-green-hover);
+}
+
+.btn-play-pause svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.spotify-native-audio {
+  display: none;
+}
+
+
+/* ==========================================================================
+   CUERPO PRINCIPAL Y CONTENIDOS
+   ========================================================================== */
+.main-content {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.main-content.visible {
+  opacity: 1;
+}
+
+.banner-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.invitation-section {
+  padding: 40px 24px;
+  text-align: center;
+  background-color: var(--bg-page);
+}
+
+.invitation-header-tag {
+  font-family: var(--font-cursive);
+  font-size: 2.4rem;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.invitation-text-body {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 380px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+/* Cuenta Regresiva */
+.countdown-section {
+  padding: 40px 24px;
+  text-align: center;
+  background-color: var(--bg-page);
+}
+
+.countdown-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+  color: var(--text-main);
+}
+
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.countdown-card {
+  background-color: var(--bg-card);
+  border: 1px solid rgba(182, 215, 168, 0.4);
+  border-radius: 12px;
+  width: 75px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(42, 61, 40, 0.04);
+}
+
+.countdown-val {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.1;
+}
+
+.countdown-lbl {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.btn-action-green {
+  background-color: var(--accent-green-bg);
+  color: var(--accent-green-text);
+  border: none;
+  padding: 15px 30px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 4px 12px rgba(169, 223, 191, 0.4);
+  margin-top: 10px;
+}
+
+.btn-action-green:hover {
+  background-color: var(--accent-green-hover);
+  transform: translateY(-1px);
+}
+
+
+/* ==========================================================================
+   SLIDESHOW (Fondo removido / Clip festoneado)
+   ========================================================================== */
+.slideshow-section {
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+}
+
+.slideshow-frame {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1/1;
+  background-color: transparent;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.slideshow-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  clip-path: url(#scalloped-clip);
+  -webkit-clip-path: url(#scalloped-clip);
+  background-color: transparent;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+  display: block;
+  object-fit: cover;
+  background-color: transparent;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 5;
+}
+
+.slideshow-ui {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 340px;
+  margin: 15px auto 0;
+  padding: 0 10px;
+  background-color: transparent;
+}
+
+.slideshow-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #c9e8be;
+  transition: var(--transition-fast);
+}
+
+.dot.active {
+  background-color: #3b7a2d;
+}
+
+.arrow-next-btn {
+  background-color: var(--accent-green-bg); 
+  border: none;
+  width: 44px;
+  height: 28px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--accent-green-text);
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: var(--transition-fast);
+}
+
+.arrow-next-btn:hover {
+  background-color: var(--accent-green-hover);
+  transform: scale(1.03);
+}
+
+.slideshow-decorative-scroll {
+  width: 100%;
+  max-width: 250px;
+  margin: 5px auto 0;
+  display: block;
+  background-color: transparent;
+}
+
+
+/* ==========================================================================
+   SECCIONES DE DATOS Y FORMULARIO
+   ========================================================================== */
+.card-section {
+  padding: 40px 24px;
+  background-color: var(--bg-page);
+}
+
+.card-title {
+  font-family: var(--font-cursive);
+  font-size: 2.8rem;
+  color: var(--text-main);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.info-card {
+  background-color: var(--bg-card); 
+  border-radius: 20px;
+  padding: 35px 20px;
+  border: 1px solid rgba(182, 215, 168, 0.4);
+  box-shadow: 0 10px 25px rgba(42, 61, 40, 0.05);
+  text-align: center;
+  width: 100%;
+}
+
+.info-card h4 {
+  font-family: var(--font-cursive);
+  font-size: 2.2rem;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.info-card .venue-name {
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
+  color: var(--text-main);
+}
+
+.info-card .venue-address {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 15px;
+}
+
+.info-card .venue-date {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  border-top: 1px solid rgba(182, 215, 168, 0.3);
+  border-bottom: 1px solid rgba(182, 215, 168, 0.3);
+  padding: 10px 0;
+  margin: 15px 0;
+}
+
+.form-group {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.form-control {
+  width: 100%;
+  background: var(--bg-page);
+  border: 1px solid rgba(182, 215, 168, 0.4);
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  transition: var(--transition-fast);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent-green-hover);
+  box-shadow: 0 0 0 3px rgba(182, 215, 168, 0.15);
+}
+
+.options-row {
+  display: flex;
+  gap: 10px;
+}
+
+.option-btn {
+  flex: 1;
+  position: relative;
+}
+
+.option-btn input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.option-btn label {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: var(--transition-fast);
+  margin-bottom: 0;
+  font-weight: 700;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.03);
+}
+
+/* ==========================================================================
+   ESTILOS DE BOTONES SI (VERDE) Y NO (ROJO) OFICIALES
+   ========================================================================== */
+/* Botón SI (Verde) */
+.option-btn input[id="attendYes"] + label {
+  background: #eafaf1;
+  border: 1.5px solid #a9dfbf;
+  color: #2c5a21;
+}
+
+.option-btn input[id="attendYes"]:checked + label {
+  background: #2c5a21;
+  border-color: #2c5a21;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(44, 90, 33, 0.3);
+}
+
+/* Botón NO (Rojo) */
+.option-btn input[id="attendNo"] + label {
+  background: #fdf2f2;
+  border: 1.5px solid #f2d7d5;
+  color: #922b21;
+}
+
+.option-btn input[id="attendNo"]:checked + label {
+  background: #922b21;
+  border-color: #922b21;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(146, 43, 33, 0.3);
+}
+
+
+/* ==========================================================================
+   ANIMACIONES AL HACER SCROLL (Reveal)
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.5, 0, 0, 1), transform 1s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.svg-clip-holder {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}

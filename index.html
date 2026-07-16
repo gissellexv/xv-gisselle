@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación XV de Gisselle ✨</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Te invito a celebrar mis XV años. ¡Conoce los detalles de mi gran fiesta, guarda la fecha y confirma tu asistencia!">
+  <meta name="author" content="Gisselle">
+  <meta property="og:title" content="Invitación XV de Gisselle">
+  <meta property="og:description" content="Acompáñame en este día tan especial. ¡Mira toda la información aquí!">
+  <meta property="og:image" content="img/gisselle_start.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Hoja de Estilos Externa -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Contenedor Principal (Bloqueado a Ancho Móvil) -->
+  <div class="app-container">
+
+    <!-- ==========================================================================
+         SOBRE DE BIENVENIDA BORGOÑA (Carta de Apertura)
+         ========================================================================== -->
+    <div class="envelope-screen" id="envelopeScreen">
+      <div class="envelope-wrapper">
+        <div class="envelope" id="envelope">
+          <!-- Solapa superior (con borde blanco interno) -->
+          <div class="envelope-flap"></div>
+          
+          <!-- Bolsillo del sobre (con cruce diagonal 3D) -->
+          <div class="envelope-pocket"></div>
+          
+          <!-- Carta de Pergamino interior (Oculta al inicio) -->
+          <div class="envelope-card" id="envelopeCard">
+            <h2>Gisselle</h2>
+            <p>Mis XV Años</p>
+            <button class="card-btn" id="btnAccept">Ver Invitación</button>
+          </div>
+          
+          <!-- Sello de lacre dorado con iniciales "XV" en cursiva -->
+          <div class="wax-seal" id="waxSeal">XV</div>
+        </div>
+      </div>
+      <p class="open-helper-text" id="openHelper">Toca el sello para abrir</p>
+    </div>
+
+    <!-- ==========================================================================
+         CONTENIDO DE LA INVITACIÓN
+         ========================================================================== -->
+    <main class="main-content" id="mainContent">
+
+      <!-- FOTO 1: Inicio del cuerpo de la web -->
+      <header class="reveal">
+        <img class="banner-img" src="img/gisselle_start.jpg" alt="Portada Gisselle XV Años">
+      </header>
+
+      <!-- REPRODUCTOR DE AUDIO ESTILO SPOTIFY -->
+      <div class="spotify-player-container reveal">
+        <div class="spotify-info">
+          <div class="spotify-album-art" id="albumArt"></div>
+          <div class="spotify-details">
+            <span class="spotify-title">La Valse de L'Amour</span>
+            <span class="spotify-artist">Yann Tiersen (Dropbox Stream)</span>
+          </div>
+        </div>
+        <div class="spotify-controls">
+          <button class="btn-play-pause" id="btnPlayPause" aria-label="Reproducir">
+            <!-- Icono de Play -->
+            <svg id="playIcon" viewBox="0 0 24 24" width="16" height="16">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            <!-- Icono de Pause (inicialmente oculto) -->
+            <svg id="pauseIcon" viewBox="0 0 24 24" width="16" height="16" style="display: none;">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+          </button>
+        </div>
+        <!-- Audio real -->
+        <audio id="bgAudio" class="spotify-native-audio" loop>
+          <source src="https://www.dropbox.com/scl/fi/osx8uj6irnxb8rrpzhr2y/YTDown.com_YouTube_La-Valse-de-L-Amour_Media_xAJIMBqlGWo_009_128k-1.mp3?rlkey=26lju2v57yh7bef34591ydl9f&st=ycwgkv0b&raw=1" type="audio/mp3">
+          Tu navegador no soporta este reproductor de audio.
+        </audio>
+      </div>
+
+      <!-- TEXTO DE BIENVENIDA -->
+      <section class="invitation-section reveal">
+        <h2 class="invitation-header-tag">- Te Invitamos -</h2>
+        <p class="invitation-text-body">
+          Con la bendición de Dios, y de mi madre Sandra Galeano... queremos que seas parte de este momento tan especial que es la celebración de mis XV años!✨
+        </p>
+      </section>
+
+      <!-- CUENTA REGRESIVA -->
+      <section class="countdown-section reveal">
+        <h3 class="countdown-title">¡ Prepárate ! Faltan tan solo...</h3>
+        
+        <div class="countdown-grid">
+          <div class="countdown-card">
+            <span class="countdown-val" id="days">00</span>
+            <span class="countdown-lbl">Días</span>
+          </div>
+          <div class="countdown-card">
+            <span class="countdown-val" id="hours">00</span>
+            <span class="countdown-lbl">Horas</span>
+          </div>
+          <div class="countdown-card">
+            <span class="countdown-val" id="minutes">00</span>
+            <span class="countdown-lbl">Minutos</span>
+          </div>
+          <div class="countdown-card">
+            <span class="countdown-val" id="seconds">00</span>
+            <span class="countdown-lbl">Segundos</span>
+          </div>
+        </div>
+
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+de+Gisselle%E2%9C%A8&dates=20260801/20260802&ctz=America/Asuncion" 
+           target="_blank" class="btn-action-green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          GUARDAR EN EL CALENDARIO
+        </a>
+      </section>
+
+      <!-- SLIDESHOW / CAROUSEL SIN FONDO BLANCO (CON 4 IMÁGENES) -->
+      <section class="slideshow-section reveal">
+        <div style="width: 100%;">
+          <div class="slideshow-frame">
+            <div class="slideshow-container">
+              <img class="slide active" src="img/gisselle_slide_1.jpg" alt="Gisselle Sesión 1">
+              <img class="slide" src="img/gisselle_slide_2.jpg" alt="Gisselle Sesión 2">
+              <img class="slide" src="img/gisselle_slide_3.jpg" alt="Gisselle Sesión 3">
+              <img class="slide" src="img/gisselle_slide_4.jpg" alt="Gisselle Sesión 4">
+            </div>
+          </div>
+          
+          <!-- Controles dinámicos para las 4 imágenes -->
+          <div class="slideshow-ui">
+            <div class="slideshow-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <button class="arrow-next-btn" id="btnNextSlide" aria-label="Siguiente Foto">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Adorno ornamental floral verde -->
+          <svg class="slideshow-decorative-scroll" viewBox="0 0 200 30" fill="none" stroke="#8eb380" stroke-width="1.5">
+            <path d="M100 15 C95 10, 95 20, 100 25 C105 20, 105 10, 100 15 Z" fill="#b6d7a8" />
+            <circle cx="100" cy="15" r="2" fill="#3b7a2d" />
+            <path d="M90 18 C70 18, 60 10, 45 15 C35 18, 30 22, 20 18 C15 15, 12 10, 15 7 C18 4, 25 8, 22 13 C20 16, 15 14, 15 12" />
+            <circle cx="45" cy="15" r="2" fill="#3b7a2d" />
+            <circle cx="20" cy="18" r="1.5" fill="#3b7a2d" />
+            <path d="M110 18 C130 18, 140 10, 155 15 C165 18, 170 22, 180 18 C185 15, 188 10, 185 7 C182 4, 175 8, 178 13 C180 16, 185 14, 185 12" />
+            <circle cx="155" cy="15" r="2" fill="#3b7a2d" />
+            <circle cx="180" cy="18" r="1.5" fill="#3b7a2d" />
+          </svg>
+        </div>
+      </section>
+
+      <!-- CELEBRACIÓN -->
+      <section class="card-section reveal">
+        <h3 class="card-title">Celebración</h3>
+        
+        <div class="info-card">
+          <h4>Salón de Eventos Albar</h4>
+          <p class="venue-name">Salón de Eventos Albar</p>
+          <p class="venue-address">San Lorenzo, Paraguay</p>
+          <p class="venue-date">01 de Agosto | 21:00 pm</p>
+          
+          <a href="https://maps.app.goo.gl/r4Swy3AcPdb4i43P7" target="_blank" class="btn-action-green" style="margin-top: 10px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            Ubicación
+          </a>
+        </div>
+      </section>
+
+      <!-- CÓDIGO DE VESTIMENTA -->
+      <section class="card-section reveal" style="padding-top: 0;">
+        <h3 class="card-title">Dress Code</h3>
+        
+        <div class="info-card">
+          <div style="font-weight: 700; font-size: 1.3rem; letter-spacing: 1px; margin-bottom: 10px;">
+            VESTIMENTA SPORT ELEGANTE
+          </div>
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6;">
+            Tu presentación es muy importante para mí.<br>
+            Uso de colores: <strong>A Libre Elección</strong>
+          </p>
+          <div style="width: 60px; height: 1.5px; background: var(--accent-green-bg); margin: 0 auto;"></div>
+        </div>
+      </section>
+
+      <!-- CONFIRMACIÓN DE ASISTENCIA -->
+      <section class="card-section reveal" style="padding-top: 0;" id="rsvpSection">
+        <h3 class="card-title">Confirmación</h3>
+        
+        <div class="info-card">
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6;">
+            Es muy importante tu presencia.<br>
+            Por favor confirma tu asistencia antes del <strong>25 de Julio</strong>.
+          </p>
+
+          <form id="rsvpForm">
+            <!-- Nombre -->
+            <div class="form-group">
+              <label for="guestName">Nombre y Apellido</label>
+              <input type="text" id="guestName" class="form-control" placeholder="Nombre completo" required autocomplete="name">
+            </div>
+
+            <!-- Asistencia -->
+            <div class="form-group">
+              <label>¿Vas a asistir?</label>
+              <div class="options-row">
+                <div class="option-btn">
+                  <input type="radio" id="attendYes" name="attendance" value="Sí, asistiré" checked>
+                  <label for="attendYes">Sí, asistiré 🎉</label>
+                </div>
+                <div class="option-btn">
+                  <input type="radio" id="attendNo" name="attendance" value="No podré asistir">
+                  <label for="attendNo">No podré 😔</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mensaje Especial -->
+            <div class="form-group">
+              <label for="guestMessage">Mensaje Especial (Opcional)</label>
+              <textarea id="guestMessage" class="form-control" rows="3" placeholder="Deja un mensaje para mí..." style="resize: none;"></textarea>
+            </div>
+
+            <!-- Botón Confirmación -->
+            <button type="submit" class="btn-action-green" style="background: var(--text-main); color: var(--bg-card); margin-top: 10px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Confirmar
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- FOTO 2: Final del cuerpo de la web (Gracias) -->
+      <footer class="reveal">
+        <img class="banner-img" src="img/gisselle_end.jpg" alt="Agradecimiento Gisselle">
+      </footer>
+
+    </main>
+
+    <!-- ==========================================================================
+         CONTENEDOR FIJO Y CENTRADO DE LA MASCOTA "DAVIK" (PNGs Transparentes)
+         ========================================================================== -->
+    <div class="mascot-fixed-wrapper">
+      <div class="mascot-container" id="mascotContainer" style="opacity: 0; pointer-events: none; bottom: 20px; right: 10px;">
+        <div class="speech-bubble" id="speechBubble">¡Tócame! 🐾</div>
+        <img id="mascotImg" src="img/davik_neutral.png" alt="Mascota Davik">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==========================================================================
+       CLIP-PATH SVG PARA LA SILUETA FESTONEADA DEL CAROUSEL (Corta bordes blancos)
+       ========================================================================== -->
+  <svg class="svg-clip-holder">
+    <defs>
+      <!-- Clip-path en unidades relativas [0, 1] formando una flor festoneada de 8 lóbulos idéntica al marco -->
+      <clipPath clipPathUnits="objectBoundingBox" id="scalloped-clip">
+        <path d="M 0.5 0.02 C 0.57 0.07, 0.61 0.05, 0.69 0.06 C 0.77 0.07, 0.82 0.08, 0.88 0.14 C 0.94 0.20, 0.93 0.25, 0.95 0.32 C 0.97 0.40, 0.95 0.45, 0.98 0.5 C 0.95 0.55, 0.97 0.60, 0.95 0.68 C 0.93 0.75, 0.94 0.80, 0.88 0.86 C 0.82 0.92, 0.77 0.93, 0.69 0.94 C 0.61 0.95, 0.57 0.93, 0.5 0.98 C 0.43 0.93, 0.39 0.95, 0.31 0.94 C 0.23 0.93, 0.18 0.92, 0.12 0.86 C 0.06 0.80, 0.06 0.75, 0.05 0.68 C 0.03 0.60, 0.05 0.55, 0.02 0.5 C 0.05 0.45, 0.03 0.40, 0.05 0.32 C 0.06 0.25, 0.06 0.20, 0.12 0.14 C 0.18 0.08, 0.23 0.07, 0.31 0.06 C 0.39 0.05, 0.43 0.07, 0.5 0.02 Z" />
+      </clipPath>
+    </defs>
+  </svg>
+
+  <!-- Script interactivo principal -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      const envelopeScreen = document.getElementById('envelopeScreen');
+      const waxSeal = document.getElementById('waxSeal');
+      const btnAccept = document.getElementById('btnAccept');
+      const openHelper = document.getElementById('openHelper');
+      const mainContent = document.getElementById('mainContent');
+      const body = document.body;
+
+      const bgAudio = document.getElementById('bgAudio');
+      const btnPlayPause = document.getElementById('btnPlayPause');
+      const playIcon = document.getElementById('playIcon');
+      const pauseIcon = document.getElementById('pauseIcon');
+      const albumArt = document.getElementById('albumArt');
+
+      // Mascota Davik
+      const mascotContainer = document.getElementById('mascotContainer');
+      const mascotImg = document.getElementById('mascotImg');
+      const speechBubble = document.getElementById('speechBubble');
+
+      // Bloquear scroll inicial hasta que se acepte la carta
+      body.style.overflow = 'hidden';
+
+      // 1. ANIMACIÓN DE APERTURA DEL SOBRE
+      function openEnvelopeProcess() {
+        envelopeScreen.classList.add('opened-flap');
+        openHelper.style.display = 'none';
+
+        // Saca la tarjeta de pergamino después de abrir la solapa
+        setTimeout(() => {
+          envelopeScreen.classList.add('pulled-card');
+        }, 800);
+      }
+
+      // Tocar el sobre o el sello abre el sobre
+      waxSeal.addEventListener('click', openEnvelopeProcess);
+      openHelper.addEventListener('click', openEnvelopeProcess);
+
+      // Aceptar invitación y revelar el cuerpo completo
+      btnAccept.addEventListener('click', () => {
+        envelopeScreen.classList.add('hide-envelope');
+        mainContent.classList.add('visible');
+        body.style.overflow = 'auto';
+
+        // Autoplay de la música de fondo
+        playMusic();
+
+        // Mostrar la mascota Davik después de abrir la invitación
+        setTimeout(() => {
+          mascotContainer.style.opacity = '1';
+          mascotContainer.style.pointerEvents = 'auto';
+          // La primera vez, Davik muestra el mensaje de inicio
+          showBubbleText("¡Tócame! 🐾");
+        }, 1500);
+
+        // Dispara la primera revisión de scroll reveal
+        setTimeout(revealOnScroll, 100);
+      });
+
+      // 2. REPRODUCTOR DE AUDIO PERSONALIZADO
+      let isPlaying = false;
+
+      function playMusic() {
+        bgAudio.play().then(() => {
+          playIcon.style.display = 'none';
+          pauseIcon.style.display = 'block';
+          albumArt.classList.add('playing');
+          isPlaying = true;
+        }).catch(err => {
+          console.log("El navegador bloqueó la reproducción automática. Presione play manualmente.");
+        });
+      }
+
+      function pauseMusic() {
+        bgAudio.pause();
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+        albumArt.classList.remove('playing');
+        isPlaying = false;
+      }
+
+      btnPlayPause.addEventListener('click', () => {
+        if (isPlaying) {
+          pauseMusic();
+        } else {
+          playMusic();
+        }
+      });
+
+      // 3. CUENTA REGRESIVA (Fecha Objetivo: 1 de Agosto de 2026 a las 21:00 Paraguay)
+      const targetDate = new Date('2026-08-01T21:00:00-04:00').getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const difference = targetDate - now;
+
+        if (difference <= 0) {
+          document.getElementById('days').innerText = '00';
+          document.getElementById('hours').innerText = '00';
+          document.getElementById('minutes').innerText = '00';
+          document.getElementById('seconds').innerText = '00';
+          clearInterval(countdownInterval);
+          return;
+        }
+
+        const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById('days').innerText = d.toString().padStart(2, '0');
+        document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+        document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
+        document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
+      }
+
+      updateCountdown();
+      const countdownInterval = setInterval(updateCountdown, 1000);
+
+      // 4. ANIMACIÓN DE DIAPOSITIVAS / CAROUSEL (4 IMÁGENES AUTOMÁTICAS Y MANUAL)
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      const btnNextSlide = document.getElementById('btnNextSlide');
+      let currentSlide = 0;
+      let slideInterval;
+
+      function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+      }
+
+      function nextSlide() {
+        showSlide(currentSlide + 1);
+      }
+
+      function startSlideShow() {
+        slideInterval = setInterval(nextSlide, 2500);
+      }
+
+      function resetSlideShow() {
+        clearInterval(slideInterval);
+        startSlideShow();
+      }
+
+      btnNextSlide.addEventListener('click', () => {
+        nextSlide();
+        resetSlideShow();
+      });
+
+      startSlideShow();
+
+      // 5. ANIMACIÓN AL HACER SCROLL (Reveal)
+      const reveals = document.querySelectorAll('.reveal');
+
+      function revealOnScroll() {
+        const triggerBottom = window.innerHeight * 0.85;
+
+        reveals.forEach(reveal => {
+          const revealTop = reveal.getBoundingClientRect().top;
+          if (revealTop < triggerBottom) {
+            reveal.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', revealOnScroll);
+
+      // ==========================================================================
+      // LÓGICA INTERACTIVA DE LA MASCOTA "DAVIK" CON IMÁGENES OFICIALES (Slide + Bubble 2.5s)
+      // ==========================================================================
+      const idlePhrases = [
+        "¡No faltes! Gisselle te espera 😻",
+        "¡Será la mejor fiesta del año! 🎈",
+        "¡Prepara tu mejor outfit! 👗✨",
+        "¡Guarda la fecha en tu calendario! 📅",
+        "¡La música va a estar increíble! 🎵",
+        "¡Habrá muchas sorpresas! 🎁",
+        "¡Te esperamos con los brazos abiertos! 🥰",
+        "¡Confirma antes del 25 de julio! 🗓️",
+        "¡Habrá cosas deliciosas! 🎂🍰",
+        "¡Ven a bailar conmigo! 💃🐾",
+        "¡Tu presencia es el mejor regalo! 💝",
+        "¡Gisselle está muy emocionada! ✨🎉"
+      ];
+
+      const happyPhrases = [
+        "¡SIII! ¡Qué gran felicidad! 🎉😻",
+        "¡Yeeei! ¡Nos vemos en la fiesta! 🥳🐾",
+        "¡A bailar y disfrutar se ha dicho! 💃✨",
+        "¡Qué emoción! ¡Ya te anoté en la lista! 📝🐈",
+        "¡Súper! ¡La vamos a pasar genial! 🤩",
+        "¡Miau! ¡Eso es una excelente noticia! 🐾💚",
+        "¡Gisselle se pondrá muy contenta! 🥰",
+        "¡Prepara tus pasos de baile! 🕺✨"
+      ];
+
+      const sadPhrases = [
+        "Oh... te vamos a extrañar mucho 😿💔",
+        "Qué lástima... ¿seguro que no puedes venir? 🥺",
+        "Gisselle se pondrá un poquito triste... 🐾",
+        "Espero que puedas cambiar de opinión... 🐈",
+        "¡Miau! Qué triste noticia... 😿",
+        "Te extrañaremos en la pista de baile... 💃",
+        "No olvides mandarle un mensajito 💌",
+        "¡Oh no! Me dio un bajón... 🥺🐾"
+      ];
+
+      // Puntos de teletransporte en las esquinas exactas del contenedor de la invitación
+      const mascotSpots = [
+        { top: 'auto', bottom: '20px', left: 'auto', right: '10px', isTop: false }, // Abajo Derecha (Default)
+        { top: 'auto', bottom: '20px', left: '10px', right: 'auto', isTop: false }, // Abajo Izquierda
+        { top: '80px', bottom: 'auto', left: 'auto', right: '10px', isTop: true },   // Arriba Derecha (bajado para evitar tapar navbar/header)
+        { top: '80px', bottom: 'auto', left: '10px', right: 'auto', isTop: true }    // Arriba Izquierda (bajado para evitar tapar navbar/header)
+      ];
+      let currentSpotIndex = 0;
+      let bubbleTimeout;
+
+      // Mostrar globo de texto durante 2.5 segundos exactos
+      function showBubbleText(text) {
+        speechBubble.innerText = text;
+        speechBubble.style.opacity = '1';
+        
+        clearTimeout(bubbleTimeout);
+        bubbleTimeout = setTimeout(() => {
+          speechBubble.style.opacity = '0';
+        }, 2500);
+      }
+
+      // Ocultar globo de texto de inmediato
+      function hideBubbleText() {
+        clearTimeout(bubbleTimeout);
+        speechBubble.style.opacity = '0';
+      }
+
+      // Cambiar cara de Davik utilizando los PNGs transparentes oficiales
+      function setMascotExpression(state) {
+        if (state === 'happy') {
+          mascotImg.src = 'img/davik_happy.png';
+        } else if (state === 'sad') {
+          mascotImg.src = 'img/davik_sad.png';
+        } else {
+          mascotImg.src = 'img/davik_neutral.png';
+        }
+      }
+
+      // Función para posicionar a Davik y voltear el globo de texto si es arriba
+      function applyMascotSpot(spot) {
+        mascotContainer.style.top = spot.top;
+        mascotContainer.style.bottom = spot.bottom;
+        mascotContainer.style.left = spot.left;
+        mascotContainer.style.right = spot.right;
+        
+        if (spot.isTop) {
+          mascotContainer.classList.add('top-corner');
+        } else {
+          mascotContainer.classList.remove('top-corner');
+        }
+      }
+
+      // Teletransporte de Davik (Deslizamiento)
+      mascotContainer.addEventListener('click', () => {
+        let newSpotIndex;
+        // Escoger un lugar diferente
+        do {
+          newSpotIndex = Math.floor(Math.random() * mascotSpots.length);
+        } while (newSpotIndex === currentSpotIndex);
+
+        // Ocultar globo inmediatamente al teletransportarse
+        hideBubbleText();
+
+        // Iniciar animación (se desliza hacia abajo)
+        mascotContainer.classList.add('teleporting');
+
+        setTimeout(() => {
+          currentSpotIndex = newSpotIndex;
+          applyMascotSpot(mascotSpots[currentSpotIndex]);
+
+          // Volver a cara neutral
+          setMascotExpression('neutral');
+
+          // Terminar animación (se desliza hacia arriba en nuevo lugar)
+          setTimeout(() => {
+            mascotContainer.classList.remove('teleporting');
+            
+            // Mostrar globo con nueva frase 300ms después de llegar a su lugar
+            setTimeout(() => {
+              const randomPhrase = idlePhrases[Math.floor(Math.random() * idlePhrases.length)];
+              showBubbleText(randomPhrase);
+            }, 300);
+
+          }, 50);
+
+        }, 300);
+      });
+
+      // Escuchadores de RSVP para cambiar la cara de Davik en vivo
+      const attendYesInput = document.getElementById('attendYes');
+      const attendNoInput = document.getElementById('attendNo');
+
+      attendYesInput.addEventListener('change', () => {
+        setMascotExpression('happy');
+        const randomHappy = happyPhrases[Math.floor(Math.random() * happyPhrases.length)];
+        showBubbleText(randomHappy);
+      });
+
+      attendNoInput.addEventListener('change', () => {
+        setMascotExpression('sad');
+        const randomSad = sadPhrases[Math.floor(Math.random() * sadPhrases.length)];
+        showBubbleText(randomSad);
+      });
+
+
+      // 6. FORMULARIO RSVP Y WHATSAPP
+      const rsvpForm = document.getElementById('rsvpForm');
+
+      rsvpForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('guestName').value.trim();
+        const attendance = document.querySelector('input[name="attendance"]:checked').value;
+        const message = document.getElementById('guestMessage').value.trim();
+
+        // ⚠️ Número de WhatsApp de la cumpleañera (Paraguay)
+        const recipientPhoneNumber = '595991576476'; 
+
+        let textMessage = `✨ *CONFIRMACIÓN - XV GISSELLE* ✨\n\n`;
+        if (attendance === "Sí, asistiré") {
+          textMessage += `¡Sí asistiré a la fiesta de XV años de Gisselle! 🎉\n`;
+        } else {
+          textMessage += `Lamentablemente no podré asistir a la fiesta de XV años de Gisselle. 😔\n`;
+        }
+        
+        textMessage += `\n👤 *Invitado:* ${name}\n`;
+
+        if (message) {
+          textMessage += `✍️ *Mensaje:* "${message}"\n`;
+        }
+
+        const encodedText = encodeURIComponent(textMessage);
+        const whatsappUrl = `https://wa.me/${recipientPhoneNumber}?text=${encodedText}`;
+
+        window.open(whatsappUrl, '_blank');
+      });
+    });
+  </script>
+</body>
+</html>
