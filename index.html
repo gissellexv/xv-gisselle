@@ -325,6 +325,16 @@
       waxSeal.addEventListener('click', openEnvelopeProcess);
       openHelper.addEventListener('click', openEnvelopeProcess);
 
+      // Tocar la tarjeta interior también acepta
+      const envelopeCard = document.getElementById('envelopeCard');
+      if (envelopeCard) {
+        envelopeCard.addEventListener('click', (e) => {
+          if (e.target !== btnAccept) {
+            btnAccept.click();
+          }
+        });
+      }
+
       // Aceptar invitación y revelar el cuerpo completo
       btnAccept.addEventListener('click', () => {
         envelopeScreen.classList.add('hide-envelope');
@@ -343,7 +353,10 @@
         }, 1500);
 
         // Dispara la primera revisión de scroll reveal
+        revealOnScroll();
         setTimeout(revealOnScroll, 100);
+        setTimeout(revealOnScroll, 400);
+        setTimeout(revealOnScroll, 800);
       });
 
       // 2. REPRODUCTOR DE AUDIO PERSONALIZADO
@@ -378,17 +391,25 @@
 
       // 3. CUENTA REGRESIVA (Fecha Objetivo: 1 de Agosto de 2026 a las 21:00 Paraguay)
       const targetDate = new Date('2026-08-01T21:00:00-04:00').getTime();
+      let countdownInterval = null;
 
       function updateCountdown() {
         const now = new Date().getTime();
         const difference = targetDate - now;
 
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+
         if (difference <= 0) {
-          document.getElementById('days').innerText = '00';
-          document.getElementById('hours').innerText = '00';
-          document.getElementById('minutes').innerText = '00';
-          document.getElementById('seconds').innerText = '00';
-          clearInterval(countdownInterval);
+          if (daysEl) daysEl.innerText = '00';
+          if (hoursEl) hoursEl.innerText = '00';
+          if (minutesEl) minutesEl.innerText = '00';
+          if (secondsEl) secondsEl.innerText = '00';
+          if (countdownInterval) {
+            clearInterval(countdownInterval);
+          }
           return;
         }
 
@@ -397,14 +418,14 @@
         const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
         const s = Math.floor((difference % (1000 * 60)) / 1000);
 
-        document.getElementById('days').innerText = d.toString().padStart(2, '0');
-        document.getElementById('hours').innerText = h.toString().padStart(2, '0');
-        document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
-        document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
+        if (daysEl) daysEl.innerText = d.toString().padStart(2, '0');
+        if (hoursEl) hoursEl.innerText = h.toString().padStart(2, '0');
+        if (minutesEl) minutesEl.innerText = m.toString().padStart(2, '0');
+        if (secondsEl) secondsEl.innerText = s.toString().padStart(2, '0');
       }
 
       updateCountdown();
-      const countdownInterval = setInterval(updateCountdown, 1000);
+      countdownInterval = setInterval(updateCountdown, 1000);
 
       // 4. ANIMACIÓN DE DIAPOSITIVAS / CAROUSEL (4 IMÁGENES AUTOMÁTICAS Y MANUAL)
       const slides = document.querySelectorAll('.slide');
@@ -446,7 +467,7 @@
       const reveals = document.querySelectorAll('.reveal');
 
       function revealOnScroll() {
-        const triggerBottom = window.innerHeight * 0.85;
+        const triggerBottom = window.innerHeight * 0.95;
 
         reveals.forEach(reveal => {
           const revealTop = reveal.getBoundingClientRect().top;
